@@ -7,7 +7,7 @@ create a directory (media, media_cdn, static, static_cdn) for static files on th
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required library.
 
-```bash
+```zsh
 pip install -r requirements.txt
 ```
 
