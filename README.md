@@ -1,13 +1,14 @@
-# Foobar
+# Super Chat
 
-Foobar is a Python library for dealing with word pluralization.
+Super Chat is a chat web app built with django.
 
 ## Installation
+create a directory (media, media_cdn, static, static_cdn) for static files.
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install foobar
+pip install -r requirements.txt
 ```
 
 ## Usage
