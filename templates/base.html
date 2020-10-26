@@ -12,9 +12,14 @@
   <body>
   {% include 'snippets/base_js.html' %}
   {% include 'snippets/header.html' %}
+  
     <section class="section">
+    <div class='container'> 
       {% block content %} {% endblock content %}
+       </div>
+        {% include 'snippets/footer.html' %}
     </section>
-    {% include 'snippets/footer.html' %}
+   
+    
   </body>
 </html>
