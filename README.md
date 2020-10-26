@@ -7,7 +7,7 @@ create a directory (media, media_cdn, static, static_cdn) for static files.
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-```bash
+```zsh
 pip install -r requirements.txt
 ```
 
