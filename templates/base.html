@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello Bulma!</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+  </head>
+  <body>
+  {% include 'snippets/base_js.html' %}
+  {% include 'snippets/header.html' %}
+    <section class="section">
+      {% block content %} {% endblock content %}
+    </section>
+    {% include 'snippets/footer.html' %}
+  </body>
+</html>
