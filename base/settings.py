@@ -27,13 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Application definition
 
 INSTALLED_APPS = [
-    # django app
-    'personal',
-
     # built-in apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # django app
+    'personal',
+    'accounts',
 
     # 3rd party app
 

@@ -10,22 +10,23 @@ class AccountManager(BaseUserManager):
         if not username:
             raise ValueError("User must have username")
         user = self.model(
-            email = self.normalize_email(email),
+            email=self.normalize_email(email),
             username=username,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
+
     def create_superuser(self, email, username, password):
         user = self.create_user(
-            email = self.normalize_email(email),
+            email=self.normalize_email(email),
             username=username,
             password=password
         )
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
+        user.save(using=self._db)
         return user
 
 
@@ -37,7 +38,7 @@ def get_default_profile_image():
     return "image/super.jpg"
 
 
-class Account():
+class Account(AbstractBaseUser):
     email = models.EmailField(
         max_length=255, unique=True, verbose_name="email")
     username = models.CharField(max_length=60, unique=True)
