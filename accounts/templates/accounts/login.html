@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %} {% csrf_token %}
+<form action="" method="POST">
+  <div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </p>
+</div>
+<div class="field">
+  <p class="control has-icons-left">
+    <input class="input" type="password" placeholder="Password">
+    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+  </p>
+</div>
+{% for field in login_form  %}
+        <p>
+        {% for error in field.errors  %}
+            <p style="color:red">{{ error }}</p>
+        {% endfor %}
+        </p>
+    {% endfor %}
+    {% if login_form.non_field_errors %}
+        <div style="color: red">
+            <p>{{ login_form.non_field_errors }}</p>
+        </div>
+    {% endif %}
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" type="submit">Login</button>
+  </div>
+  <div class="control">
+    <button class="button is-link is-light">Reset Password</button>
+  </div>
+</div>
+</form>
+{% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<form method="POST"> {% csrf_token %}
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input class="input" name="email" id="inputEmail" type="email" placeholder="e.g Alex Smith">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control">
+      <input class="input" name="username" id="inputUsername" type="text" placeholder="e.g Alex Smith">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" name='password1' id="inputPassword1" placeholder="e.g. alexsmith@gmail.com">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">confirm-Password</label>
+    <div class="control">
+      <input class="input" name='password2' id="inputPassword2" type="password" placeholder="e.g. alexsmith@gmail.com">
+    </div>
+  </div>
+
+  {% for field in registration_form %}
+  <p>
+    {% for error in field.errors %}
+    <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+  {% endfor %}
+  {% if registration_form.non_field_errors %}
+  <div style="color: red">
+    <p>{{registration_form.non_field_errors}}</p>
+  </div>
+
+  {% endif %}
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit">Register</button>
+    </div>
+  </div>
+</form>
+{% endblock content %}
