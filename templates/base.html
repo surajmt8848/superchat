@@ -1,26 +1,45 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Super Chat</title>
-     <link
+    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style type="text/css" media="screen">
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      #wrapper {
+        flex: 1;
+      }
+    </style>
   </head>
- 
   <body>
-     {% include 'snippets/base_js.html' %} 
     {% include 'snippets/header.html' %}
-
-    <section class="section has-background-info">
-      <div class="container">{% block content %} 
-        {% endblock content %}
-      </div>
-    </section>
-
+    <div id="wrapper">
+      <section class="section">
+        <div class="container">
+         
+          {% block content %} {% endblock content %}</div>
+      </section>
+    </div>
     {% include 'snippets/footer.html' %}
+
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
+    ></script>
   </body>
 </html>

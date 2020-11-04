@@ -1,61 +1,48 @@
-<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent">
   <div class="navbar-brand">
-    <a class="navbar-item" href="{% url 'home' %}">
+    <a class="navbar-item" href="https://bulma.io">
       <img
         src="https://bulma.io/images/bulma-logo.png"
+        alt="Bulma: a modern CSS framework based on Flexbox"
         width="112"
         height="28"
       />
     </a>
-
-    <a
-      role="button"
-      class="navbar-burger burger"
-      aria-label="menu"
-      aria-expanded="false"
-      data-target="navbarBasicExample"
+    <div
+      class="navbar-burger burger ml-0"
+      data-target="navbarExampleTransparentExample"
     >
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="{% url 'home' %}"> Home </a>
-
-      <a class="navbar-item"> Documentation </a>
     </div>
 
     <div class="navbar-end">
       {% if request.user.is_authenticated %}
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          <figure class="image is-32x32">
-  <img class="is-rounded" src="{{ request.user.profile_image.url }}">
-        </figure>
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item"> {{request.user.username}} </a>
-          <a class="navbar-item"> Jobs </a>
-          <a class="navbar-item"> Contact </a>
-          <hr class="navbar-divider" />
-          <a href="{% url 'logout' %} class="navbar-item" > Logout </a>
-        </div>
-      </div>
       <div class="navbar-item">
-        {% comment %}
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            <span class="icon">
-              <i class="far fa-bell"></i>
-            </span>
-          </a>
-          <div class="dropdown is-right is-active">
-            <div class="dropdown-trigger"></div>
-            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+        <div class="field is-grouped">
+         {% include 'snippets/search.html' %}
+          {% comment %} Notifications {% endcomment %}
+          <div class="dropdown is-hoverable is-right">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu4"
+              >
+                <span><i class="far fa-bell"></i></span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
               <div class="dropdown-content">
                 <div class="dropdown-item">
                   <p>
@@ -63,43 +50,83 @@
                     the dropdown menu.
                   </p>
                 </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>
-                    You simply need to use a <code>&lt;div&gt;</code> instead.
-                  </p>
-                </div>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item"> This is a link </a>
               </div>
             </div>
           </div>
-        </div>
-        {% endcomment %}
-       <div class="dropdown is-hoverable is-right">
-    <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-      <span><i class="far fa-bell"></i></span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-    <div class="dropdown-content">
-      <div class="dropdown-item">
-        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-      </div>
-    </div>
-  </div>
-      </div>
-      {% else %}
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary" href="{% url 'register' %}">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light" href="{% url 'login' %} > Log in </a>
+          {% comment %} End Notifications {% endcomment %} {% comment %} Profile
+          Start {% endcomment %}
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <figure class="image is-32x32">
+                <img
+                  class="is-rounded"
+                  src="{{ request.user.profile_image.url }}"
+                />
+              </figure>
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/overview/start/"
+              >
+                Overview
+              </a>
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/overview/modifiers/"
+              >
+                Modifiers
+              </a>
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/columns/basics/"
+              >
+                Columns
+              </a>
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/layout/container/"
+              >
+                Layout
+              </a>
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/form/general/"
+              >
+                Form
+              </a>
+              <hr class="navbar-divider" />
+              <a
+                class="navbar-item"
+                href="https://bulma.io/documentation/elements/box/"
+              >
+                Elements
+              </a>
+              <a
+                class="navbar-item is-active"
+                href="{% url 'logout' %}"
+              >
+                Logout
+              </a>
+            </div>
+          </div>
+          {% comment %} profile end {% endcomment %} {% else %}
+          <p class="control mt-2">
+            <a class="bd-tw-button button" href="{% url 'login' %}">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              <span> Login </span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-primary mt-2 ml-2 mr-2" href="{% url 'register' %}">
+              <span class="icon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+              <span>Signup</span>
+            </a>
+          </p>
         </div>
       </div>
       {% endif %}
