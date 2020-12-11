@@ -1,10 +1,17 @@
 <div class="field has-addons mr-2">
-  <div class="control">
-    <input class="input" type="text" placeholder="Find a repository">
-  </div>
-  <div class="control">
-    <a class="button is-info">
-      Search
-    </a>
-  </div>
+  <form onsubmit="return executeQuery()">
+    <div class="control">
+      <input class="input" type="text" id="search_bar" placeholder="Find a repository">
+     
+    </div>
+  </form>
 </div>
+
+
+<script type="text/javascript">
+  function executeQuery(){
+    var query = document.getElementById("search_bar").value;
+    window.location.replace("{% url 'account:search' %}?q=" + query)
+    return false
+  }
+</script
